@@ -8,13 +8,14 @@ export const metadata: Metadata = {
     description: "An AI buddy that helps with records meetings.",
 };
 
-const manrope = Manrope();
+
 
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const manrope = Manrope();
 
     const hello = "";
     hello.split("as");
