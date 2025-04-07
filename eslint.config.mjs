@@ -4,7 +4,7 @@ import globals from "globals";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
-import nextPlugin from "eslint-plugin-next";
+// import nextPlugin from "eslint-plugin-next";
 import drizzlePlugin from "eslint-plugin-drizzle";
 
 export default defineConfig([

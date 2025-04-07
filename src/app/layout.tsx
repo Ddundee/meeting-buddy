@@ -9,17 +9,11 @@ export const metadata: Metadata = {
 };
 
 
+const manrope = Manrope({
+    subsets: ["latin"]
+});
 
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
-    const manrope = Manrope();
-
-    const hello = "";
-    hello.split("as");
-
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
 
     return (
         <html lang="en">
