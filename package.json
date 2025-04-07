@@ -3,20 +3,65 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
     "build": "next build",
+    "check": "concurrently --names \"lint,typecheck,format\" --prefix-colors \"yellow,blue,green\" \"next lint\" \"tsc --noEmit\" \"npm run format:check\"",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:push:verbose": "drizzle-kit push --verbose",
+    "db:drop": "drizzle-kit drop",
+    "db:studio": "drizzle-kit studio",
+    "dev": "next dev --turbopack",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "preview": "next build && next start",
     "start": "next start",
-    "lint": "next lint"
+    "typecheck": "tsc --noEmit",
+    "format:write:prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    "format:check:prettier": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    "format:write:eslint": "eslint . --fix",
+    "format:check:eslint": "eslint .",
+    "format:write": "npm run format:write:prettier && npm run format:write:eslint",
+    "format:check": "npm run format:check:prettier && npm run format:check:eslint"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.3",
+    "better-auth": "^1.2.5",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.41.0",
+    "eslint-plugin-drizzle": "^0.2.3",
+    "next": "15.2.4",
+    "pg": "^8.14.1",
+    "postcss": "^8.5.3",
+    "postgres": "^3.4.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.4"
+    "tailwindcss": "^4.1.3",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/js": "^9.24.0",
     "@types/node": "^20",
+    "@types/pg": "^8.11.11",
     "@types/react": "^19",
-    "@types/react-dom": "^19"
+    "@types/react-dom": "^19",
+    "drizzle-kit": "^0.30.6",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "3.5.3",
+    "pretty-quick": "^4.1.1",
+    "simple-git-hooks": "^2.12.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5",
+    "typescript-eslint": "^8.29.0"
   }
 }
